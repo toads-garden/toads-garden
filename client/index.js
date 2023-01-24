@@ -1,16 +1,26 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-import { Provider } from 'react-redux';
-import store from './app/store.js';
-import App from './app/App';
-import { BrowserRouter as Router } from 'react-router-dom';
+import * as Phaser from "phaser";
 
-const root = createRoot(document.getElementById('app'));
+const config = {
+  type: Phaser.AUTO,
+  dom: { createContainer: true },
+  scale: {
+    mode: Phaser.Scale.FIT,
+    parent: "game",
+    autoCenter: Phaser.Scale.CENTER_BOTH,
+    width: innerWidth,
+    heigt: innerHeight,
+  },
+  scene: [],
+  physics: {
+    default: "arcade",
+    arcade: {
+      gravity: { y: 300 },
+      debug: false,
+    },
+  },
+  render: {
+    pixelArt: true,
+  },
+};
 
-root.render(
-  <Router>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </Router>
-);
+const game = new Phaser.Game(config);
