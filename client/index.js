@@ -1,26 +1,21 @@
 import * as Phaser from "phaser";
+import Garden from "./scenes/Garden";
 
 const config = {
-  type: Phaser.AUTO,
-  dom: { createContainer: true },
-  scale: {
-    mode: Phaser.Scale.FIT,
-    parent: "game",
-    autoCenter: Phaser.Scale.CENTER_BOTH,
-    width: innerWidth,
-    heigt: innerHeight,
-  },
-  scene: [],
+  width: 640,
+  height: 480,
+  parent: "game",
+  backgroundColor: "#FFFFAC",
+  title: "Tilemap",
+  pixelArt: true,
   physics: {
     default: "arcade",
     arcade: {
-      gravity: { y: 300 },
       debug: false,
+      gravity: { y: 300 },
     },
   },
-  render: {
-    pixelArt: true,
-  },
+  scene: [Garden],
 };
 
-const game = new Phaser.Game(config);
+new Phaser.Game(config);
